@@ -3,6 +3,7 @@ import './App.css'
 
 //Components
 import FruitBasket from "./components/fruitbasket/FruitBasket.jsx";
+import OrderForm from "./components/orderform/OrderForm.jsx";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <>
         <h1>Fruitmand bezorgservice</h1>
         <FruitBasket />
+        <OrderForm />
     </>
   )
 }
