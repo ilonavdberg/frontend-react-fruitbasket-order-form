@@ -4,23 +4,14 @@ import './FruitBasket.css'
 //Components
 import FruitCounter from "../fruitcounter/FruitCounter.jsx"
 
-//Functions
-import {useState} from "react"
 
-
-function FruitBasket() {
-    const [fruitCounts, setFruitCounts] = useState({
-        strawberries: 0,
-        bananas: 0,
-        apples: 0,
-        kiwis: 0
-    });
+function FruitBasket({fruitCounts, setFruitCounts}) {
 
     const updateFruitCount = (fruit, newCount) => {
-        setFruitCounts({
-            ...fruitCounts,
-            [fruit]: newCount
-        });
+        setFruitCounts((prevCounts) => ({
+            ...prevCounts,
+            [fruit]: newCount,
+        }));
     };
 
     const resetFruitCounts = () => {

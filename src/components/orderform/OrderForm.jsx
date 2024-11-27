@@ -4,8 +4,7 @@ import './OrderForm.css'
 //Functions
 import {useForm} from 'react-hook-form'
 
-function OrderForm() {
-
+function OrderForm({fruitCounts}) {
     const {
         register,
         handleSubmit,
@@ -13,7 +12,8 @@ function OrderForm() {
     } = useForm();
 
     function onSubmit(data) {
-        console.log(data)
+        console.log("Klantgegevens: ", data)
+        console.log("Bestelling: ", fruitCounts)
     }
 
     return (

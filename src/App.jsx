@@ -4,15 +4,34 @@ import './App.css'
 //Components
 import FruitBasket from "./components/fruitbasket/FruitBasket.jsx";
 import OrderForm from "./components/orderform/OrderForm.jsx";
+import {useState} from "react";
 
 
 function App() {
+    const [fruitCounts, setFruitCounts] = useState({
+        strawberries: 0,
+        bananas: 0,
+        apples: 0,
+        kiwis: 0
+    });
+
+    // const updateFruitCount = (fruit, newCount) => {
+    //     setFruitCounts({
+    //         ...fruitCounts,
+    //         [fruit]: newCount
+    //     });
+    // };
 
   return (
     <>
         <h1>Fruitmand bezorgservice</h1>
-        <FruitBasket />
-        <OrderForm />
+        <FruitBasket
+            fruitCounts={fruitCounts}
+            setFruitCounts={setFruitCounts}
+        />
+        <OrderForm
+            fruitCounts={fruitCounts}
+        />
     </>
   )
 }
