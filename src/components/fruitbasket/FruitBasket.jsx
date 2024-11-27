@@ -62,7 +62,6 @@ function FruitBasket() {
                 />
             </div>
             <button
-                className={"fruitbasket__button"}
                 type={"button"}
                 onClick={resetFruitCounts}
             >

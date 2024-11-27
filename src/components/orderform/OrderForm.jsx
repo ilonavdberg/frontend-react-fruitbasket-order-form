@@ -1,76 +1,153 @@
 //Styling
 import './OrderForm.css'
 
+//Functions
+import {useForm} from 'react-hook-form'
 
 function OrderForm() {
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm();
+
+    function onSubmit(data) {
+        console.log(data)
+    }
+
     return (
-        <>
+        <section className="orderform">
             <h2>Bestelformulier</h2>
-            <form>
-                <label htmlFor="first-name-field">Voornaam </label>
-                <input
-                    type="text"
-                    id="first-name-field"
-                    name="first-name"
-                />
-                <label htmlFor="last-name-field">Achternaam </label>
-                <input
-                    type="text"
-                    id="last-name-field"
-                    name="last-name"
-                />
-                <label htmlFor="age-field">Leeftijd </label>
-                <input
-                    type="text"
-                    id="age-field"
-                    name="age"
-                />
-                <label htmlFor="zipcode-field">Postcode </label>
-                <input
-                    type="text"
-                    id="zipcode-field"
-                    name="zipcode"
-                />
-                <label htmlFor="delivery-frequency-select">Bezorgfrequentie</label>
-                <select 
-                    name="delivery-frequency" 
-                    id="delivery-frequency-select"
-                >
-                    <option value="weekly">Iedere week</option>
-                    <option value="biweekly">Iedere twee weken</option>
-                    <option value="monthly">Iedere maand</option>
-                </select>
-                <input
-                    type="radio"
-                    id="daytime"
-                    name="delivery-window"
-                    value="daytime"
-                />
-                <label htmlFor="daytime">Overdag</label>
-                <input 
-                type="radio"
-                id="evening"
-                name="delivery-window"
-                value="evening"
-                />
-                <label htmlFor="evening">'s Avonds</label>
-                <label htmlFor="remarks-field">Opmerkingen</label>
-                <textarea name="remarks" id="remarks-field" cols="30" rows="10"></textarea>
-                <input
-                    type="checkbox"
-                    id="agreed-to-terms-checkbox"
-                    name="agreed-to-terms"
-                    value={false}
-                />
-                <label htmlFor="agreed-to-terms-checkbox">Ik ga akkoord met de voorwaarden</label>
-                <button
-                    type="button"
-                >
+            <form onSubmit={handleSubmit(onSubmit)} className="orderform__questions">
+                <label htmlFor="first-name-field">
+                    Voornaam
+                    <input
+                        type="text"
+                        id="firstname-field"
+                        {...register('firstname', {
+                            required: {
+                                value: true,
+                                message: "Dit veld is verplicht"
+                            }
+                        })}
+                    />
+                    {errors.firstname && <p className="errormessage">{errors.firstname.message}</p>}
+                </label>
+
+                <label htmlFor="lastname-field">
+                    Achternaam
+                    <input
+                        type="text"
+                        id="lastname-field"
+                        {...register('lastname', {
+                            required: {
+                                value: true,
+                                message: "Dit veld is verplicht"
+                            }
+                        })}
+                    />
+                    {errors.lastname && <p className="errormessage">{errors.lastname.message}</p>}
+                </label>
+
+                <label htmlFor="age-field">
+                    Leeftijd
+                    <input
+                        type="text"
+                        id="age-field"
+                        {...register('age', {
+                            required: {
+                                value: true,
+                                message: "Dit veld is verplicht"
+                            }
+                        })}
+                    />
+                    {errors.age && <p className="errormessage">{errors.age.message}</p>}
+                </label>
+
+                <label htmlFor="zipcode-field">
+                    Postcode
+                    <input
+                        type="text"
+                        id="zipcode-field"
+                        {...register('zipcode', {
+                            required: {
+                                value: true,
+                                message: "Dit veld is verplicht"
+                            }
+                        })}
+                    />
+                    {errors.zipcode && <p className="errormessage">{errors.zipcode.message}</p>}
+                </label>
+
+                <label htmlFor="delivery-frequency-select">
+                    Bezorgfrequentie
+                    <select
+                        id="delivery-frequency-select"
+                        {...register('delivery-frequency')}
+                    >
+                        <option value="weekly">Iedere week</option>
+                        <option value="biweekly">Iedere twee weken</option>
+                        <option value="monthly">Iedere maand</option>
+                    </select>
+                </label>
+
+                <div>
+                    <label htmlFor="daytime">
+                        <input
+                            type="radio"
+                            id="daytime"
+                            value="daytime"
+                            {...register('delivery-window')}
+                        />
+                        Overdag
+                    </label>
+
+                    <label htmlFor="evening">
+                        <input
+                            type="radio"
+                            id="evening"
+                            value="evening"
+                            {...register('delivery-window')}
+                        />
+                        {"'s Avonds"}
+                    </label>
+                </div>
+
+
+                <label htmlFor="remarks-field">
+                    Opmerkingen
+                    <textarea
+                        id="remarks-field"
+                        cols="30"
+                        rows="10"
+                        {...register('remarks')}
+                    >
+                </textarea>
+                </label>
+
+
+                <label htmlFor="agreed-to-terms-checkbox">
+                    <input
+                        type="checkbox"
+                        id="agreed-to-terms-checkbox"
+                        {...register('agreedToTerms', {
+                            required: {
+                                value: true,
+                                message: "U moet akkoord gaan met de voorwaarden"
+                            }
+                        })}
+                    />
+                    Ik ga akkoord met de voorwaarden
+                    {errors.agreedToTerms && <p className="errormessage">{errors.agreedToTerms.message}</p>}
+                </label>
+
+                <button type="submit">
                     Verzenden
                 </button>
             </form>
-        </>
-    )
+        </section>
+    );
 }
 
 export default OrderForm

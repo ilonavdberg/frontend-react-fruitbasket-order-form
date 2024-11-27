@@ -14,7 +14,7 @@ function FruitCounter( { fruitName, fruitEmoji, fruitCount, setFruitCount }) {
 
     return (
         <article className="fruitcounter">
-            <h2 className="fruitcounter__title"> <span>{fruitEmoji}</span>{fruitName}</h2>
+            <h2> <span>{fruitEmoji}</span>{fruitName}</h2>
             <button
                 className="fruitcounter__button"
                 type="button"
@@ -24,7 +24,7 @@ function FruitCounter( { fruitName, fruitEmoji, fruitCount, setFruitCount }) {
             >
                 -
             </button>
-            <p className="fruitcounter__count">{fruitCount}</p>
+            <p>{fruitCount}</p>
             <button
                 className="fruitcounter__button"
                 type="button"
