@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     width: 480px;
-    border: 1px dashed red;
 }
 
 .orderform__questions {
@@ -13,6 +12,5 @@
 
 .orderform .errormessage {
     margin: 1px 0 0;
-    color: red;
     font-size: small;
 }

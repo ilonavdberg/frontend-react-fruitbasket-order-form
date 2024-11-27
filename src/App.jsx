@@ -4,6 +4,8 @@ import './App.css'
 //Components
 import FruitBasket from "./components/fruitbasket/FruitBasket.jsx";
 import OrderForm from "./components/orderform/OrderForm.jsx";
+
+//Functions
 import {useState} from "react";
 
 
@@ -15,15 +17,8 @@ function App() {
         kiwis: 0
     });
 
-    // const updateFruitCount = (fruit, newCount) => {
-    //     setFruitCounts({
-    //         ...fruitCounts,
-    //         [fruit]: newCount
-    //     });
-    // };
-
   return (
-    <>
+    <main>
         <h1>Fruitmand bezorgservice</h1>
         <FruitBasket
             fruitCounts={fruitCounts}
@@ -32,7 +27,7 @@ function App() {
         <OrderForm
             fruitCounts={fruitCounts}
         />
-    </>
+    </main>
   )
 }
 
